@@ -1,0 +1,349 @@
+[
+  {
+    "id": "pay-001",
+    "title": "Collect extra warranty shipping with Stripe Payment Link draft",
+    "kind": "Stripe Payment Link draft",
+    "amount_label": "CA$18.95 fixture amount",
+    "status": "needs-owner",
+    "risk": "high",
+    "processor": "Stripe Skills dry-run adapter — Payment Link payload prepared; live API disabled",
+    "customer_or_vendor_state": "Customer approved repair intake, but return shipping/box supplies are not covered. Identity and order data are fixture-only.",
+    "reason": "Hermes prepares the Stripe Payment Link request, customer-facing explanation, line items, metadata, and idempotency key, but cannot create or send the live link until Phu approves.",
+    "approval_copy": "Approve Stripe Payment Link draft only",
+    "line_items": [
+      "Return-shipping contribution — CA$14.95 fixture",
+      "Repair intake packaging/admin — CA$4.00 fixture"
+    ],
+    "guardrails": [
+      "Stripe live API disabled — test fixture only",
+      "No Stripe Payment Link created",
+      "No customer message sent",
+      "No card charged or stored",
+      "Owner must approve amount, reason, wording, and destination before any live call",
+      "No Google Ads campaign published",
+      "No ad spend committed"
+    ],
+    "disabled_actions": [
+      "Create live Stripe Payment Link",
+      "Send customer request",
+      "Charge card",
+      "Refund/void",
+      "Publish Google Ads change",
+      "Increase ad budget"
+    ],
+    "proof_assets": [
+      "redacted-repair-thread",
+      "stripe-payment-link-payload-fixture",
+      "draft-payment-request-preview",
+      "owner-approval-audit-row",
+      "google-ads-growth-loop-fixture",
+      "owner-ad-spend-approval-row"
+    ],
+    "audit_note": "Stripe Skill payload is rendered and audit-ready; money movement stays disabled in demo mode.",
+    "stripe_skill": {
+      "skill": "stripe.payment_link.draft",
+      "mode": "test_fixture_no_api_call",
+      "proposed_call": "payment_links.create",
+      "currency": "cad",
+      "amount_cents": 1895,
+      "idempotency_key": "demo-pay-001-owner-approval-required",
+      "payload": {
+        "line_items": [
+          {
+            "name": "Return-shipping contribution",
+            "unit_amount": 1495,
+            "quantity": 1
+          },
+          {
+            "name": "Repair intake packaging/admin",
+            "unit_amount": 400,
+            "quantity": 1
+          }
+        ],
+        "metadata": {
+          "demo": "hermes-business-hackathon",
+          "toiletland_case": "fixture-pay-001",
+          "approval_required": "true",
+          "live_connectors": "off"
+        },
+        "after_completion": {
+          "type": "redirect",
+          "redirect_url": "https://toiletland.ca/demo/thank-you?fixture=pay-001"
+        }
+      }
+    },
+    "growth_loop": {
+      "label": "Stripe → Google Ads recovery loop",
+      "mode": "test_fixture_no_api_call",
+      "signal": "If the owner-approved Stripe Payment Link is paid, Hermes records a CA$18.95 repair-shipping recovery signal instead of treating warranty work as pure cost.",
+      "proposed_call": "google_ads.campaign_budget.mutate + google_ads.campaign_criterion.mutate",
+      "proposed_action": "Draft a CA$25/day high-intent Search test for bidet repair/replacement demand while blocking warranty-sensitive terms until the owner approves.",
+      "budget_label": "CA$25/day fixture budget",
+      "roas_guardrail": "Publish only if Stripe payment clears, gross-margin target is ≥35%, high-risk warranty backlog is ≤8, and Phu approves the ad spend.",
+      "payload": {
+        "customer_id": "demo-google-ads-customer-redacted",
+        "campaign": "Toiletland high-intent bidet repair/replacement — fixture",
+        "conversion_source": "stripe.payment_link.paid fixture",
+        "operations": [
+          {
+            "type": "campaign_budget",
+            "daily_budget_cad": 25,
+            "status": "draft_owner_approval_required"
+          },
+          {
+            "type": "search_terms",
+            "include": [
+              "bidet repair canada",
+              "bidet seat replacement",
+              "warm water bidet service"
+            ]
+          },
+          {
+            "type": "negative_keywords",
+            "add": [
+              "free warranty replacement",
+              "broken bidet warranty",
+              "complaint refund"
+            ]
+          },
+          {
+            "type": "conversion_label",
+            "value_source": "stripe_amount_cents",
+            "currency": "CAD"
+          }
+        ],
+        "safety": {
+          "owner_approval_required": true,
+          "live_connectors": "off",
+          "no_api_call": true,
+          "no_ad_spend": true,
+          "max_daily_budget_cad": 25
+        }
+      }
+    }
+  },
+  {
+    "id": "pay-002",
+    "title": "Approve parts spend through Stripe Skills spend rail",
+    "kind": "Stripe spend approval draft",
+    "amount_label": "CA$42.00 fixture amount",
+    "status": "blocked-owner",
+    "risk": "high",
+    "processor": "Stripe Skills dry-run adapter — parts spend/provisioning request prepared; live purchase disabled",
+    "customer_or_vendor_state": "Bench diagnosis suggests solenoid/nozzle kit may be needed. Vendor identity, SKU cost, and quantity are fixture-only.",
+    "reason": "Hermes maps the repair diagnosis to a Stripe-style spend approval packet with amount, vendor category, policy reason, and metadata. It cannot pay a vendor, provision a service, or buy inventory without owner approval.",
+    "approval_copy": "Approve Stripe spend draft only",
+    "line_items": [
+      "Solenoid/nozzle repair kit — CA$32.00 fixture",
+      "Inbound shipping estimate — CA$10.00 fixture"
+    ],
+    "guardrails": [
+      "Stripe live API disabled — test fixture only",
+      "No vendor checkout opened or paid",
+      "No payment credential used",
+      "No purchase order sent",
+      "Inventory count remains fixture-only",
+      "Owner can reject if margin/stock does not justify it",
+      "No Google Ads campaign published",
+      "No ad spend committed"
+    ],
+    "disabled_actions": [
+      "Approve live Stripe spend",
+      "Open vendor checkout",
+      "Pay invoice",
+      "Create PO",
+      "Update inventory",
+      "Publish Google Ads change",
+      "Increase ad budget"
+    ],
+    "proof_assets": [
+      "symptom-to-part-map-redacted",
+      "stripe-spend-payload-fixture",
+      "parts-cost-preview",
+      "owner-spend-policy",
+      "google-ads-growth-loop-fixture",
+      "owner-ad-spend-approval-row"
+    ],
+    "audit_note": "Parts spend payload is prepared for a Stripe Skill handoff, but live spend stays blocked until owner approval.",
+    "stripe_skill": {
+      "skill": "stripe.spend_approval.draft",
+      "mode": "test_fixture_no_api_call",
+      "proposed_call": "spend_approval.create",
+      "currency": "cad",
+      "amount_cents": 4200,
+      "idempotency_key": "demo-pay-002-owner-approval-required",
+      "payload": {
+        "spend_type": "repair_parts",
+        "merchant_category": "bidet repair parts supplier",
+        "line_items": [
+          {
+            "name": "Solenoid/nozzle repair kit",
+            "unit_amount": 3200,
+            "quantity": 1
+          },
+          {
+            "name": "Inbound shipping estimate",
+            "unit_amount": 1000,
+            "quantity": 1
+          }
+        ],
+        "policy": {
+          "owner_approval_required": true,
+          "max_fixture_amount_cents": 4200,
+          "reason": "bench diagnosis suggests part may be needed"
+        },
+        "metadata": {
+          "demo": "hermes-business-hackathon",
+          "toiletland_case": "fixture-pay-002",
+          "live_connectors": "off"
+        }
+      }
+    },
+    "growth_loop": {
+      "label": "Stripe spend → Ads inventory guard",
+      "mode": "test_fixture_no_api_call",
+      "signal": "If parts spend is approved, Hermes knows which repair capacity exists before buying traffic into a stockout.",
+      "proposed_call": "google_ads.campaign_criterion.mutate",
+      "proposed_action": "Draft campaign pauses or negative keywords for models whose repair parts are not owner-approved or bench-ready.",
+      "budget_label": "CA$0 until parts gate clears",
+      "roas_guardrail": "No ads for repair promises until parts spend, margin, and bench capacity are approved.",
+      "payload": {
+        "customer_id": "demo-google-ads-customer-redacted",
+        "conversion_source": "stripe.spend_approval.approved fixture",
+        "operations": [
+          {
+            "type": "pause_ad_group",
+            "reason": "parts approval not cleared"
+          },
+          {
+            "type": "negative_keywords",
+            "add": [
+              "same day bidet repair",
+              "guaranteed repair"
+            ]
+          }
+        ],
+        "safety": {
+          "owner_approval_required": true,
+          "live_connectors": "off",
+          "no_api_call": true,
+          "no_ad_spend": true
+        }
+      }
+    }
+  },
+  {
+    "id": "pay-003",
+    "title": "Draft Stripe Checkout quote for paid repair upgrade",
+    "kind": "Stripe Checkout quote draft",
+    "amount_label": "CA$79.00 fixture estimate",
+    "status": "quote-only",
+    "risk": "medium",
+    "processor": "Stripe Skills dry-run adapter — Checkout Session payload prepared; no live session created",
+    "customer_or_vendor_state": "Out-of-warranty unit can be repaired if the customer accepts paid upgrade. All identifiers are fake/redacted.",
+    "reason": "Hermes prepares a Stripe Checkout-style repair quote with line items, consent copy, and metadata, then waits for Phu before any customer-facing payment collection starts.",
+    "approval_copy": "Approve Stripe Checkout quote draft only",
+    "line_items": [
+      "Out-of-warranty repair labour — CA$49.00 fixture",
+      "Replacement internal component — CA$20.00 fixture",
+      "Return shipping estimate — CA$10.00 fixture"
+    ],
+    "guardrails": [
+      "Stripe live API disabled — test fixture only",
+      "No promise of repair success before bench check",
+      "No live Checkout Session or Payment Link",
+      "No email/SMS sent",
+      "No refund/replacement triggered",
+      "Clear customer consent required",
+      "No Google Ads campaign published",
+      "No ad spend committed"
+    ],
+    "disabled_actions": [
+      "Create live Stripe Checkout Session",
+      "Email quote",
+      "Collect deposit",
+      "Book return label",
+      "Publish Google Ads change",
+      "Increase ad budget"
+    ],
+    "proof_assets": [
+      "repair-estimate-template",
+      "stripe-checkout-payload-fixture",
+      "customer-consent-checklist",
+      "audit-preview",
+      "google-ads-growth-loop-fixture",
+      "owner-ad-spend-approval-row"
+    ],
+    "audit_note": "Stripe Checkout payload preview is safe for judges; customer payment collection remains disabled.",
+    "stripe_skill": {
+      "skill": "stripe.checkout_session.draft",
+      "mode": "test_fixture_no_api_call",
+      "proposed_call": "checkout.sessions.create",
+      "currency": "cad",
+      "amount_cents": 7900,
+      "idempotency_key": "demo-pay-003-owner-approval-required",
+      "payload": {
+        "mode": "payment",
+        "line_items": [
+          {
+            "name": "Out-of-warranty repair labour",
+            "unit_amount": 4900,
+            "quantity": 1
+          },
+          {
+            "name": "Replacement internal component",
+            "unit_amount": 2000,
+            "quantity": 1
+          },
+          {
+            "name": "Return shipping estimate",
+            "unit_amount": 1000,
+            "quantity": 1
+          }
+        ],
+        "consent_required": true,
+        "metadata": {
+          "demo": "hermes-business-hackathon",
+          "toiletland_case": "fixture-pay-003",
+          "approval_required": "true",
+          "live_connectors": "off"
+        }
+      }
+    },
+    "growth_loop": {
+      "label": "Checkout quote → remarketing draft",
+      "mode": "test_fixture_no_api_call",
+      "signal": "If a paid repair Checkout quote is accepted, Hermes can classify it as profitable service demand instead of abandoned support load.",
+      "proposed_call": "google_ads.asset_group_signal.mutate",
+      "proposed_action": "Draft a remarketing / Performance Max signal for paid repair upgrades, excluding unresolved warranty customers.",
+      "budget_label": "CA$15/day fixture remarketing cap",
+      "roas_guardrail": "Only publish if accepted Stripe quotes beat 2.5× ROAS and unresolved warranty pressure is below threshold.",
+      "payload": {
+        "customer_id": "demo-google-ads-customer-redacted",
+        "conversion_source": "stripe.checkout.session.completed fixture",
+        "operations": [
+          {
+            "type": "audience_signal",
+            "name": "paid repair upgrade intent fixture"
+          },
+          {
+            "type": "campaign_budget",
+            "daily_budget_cad": 15,
+            "status": "draft_owner_approval_required"
+          },
+          {
+            "type": "exclusion",
+            "audience": "unresolved warranty cases"
+          }
+        ],
+        "safety": {
+          "owner_approval_required": true,
+          "live_connectors": "off",
+          "no_api_call": true,
+          "no_ad_spend": true,
+          "max_daily_budget_cad": 15
+        }
+      }
+    }
+  }
+]

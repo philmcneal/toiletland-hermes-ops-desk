@@ -1,0 +1,27 @@
+[
+  {
+    "action": "approved-demo",
+    "label": "Approve draft only",
+    "effect": "Changes browser-local state and appends a local audit row only."
+  },
+  {
+    "action": "needs-owner",
+    "label": "Keep owner review",
+    "effect": "Marks the task as requiring owner review."
+  },
+  {
+    "action": "rejected-demo",
+    "label": "Reject recommendation",
+    "effect": "Rejects the proposed action in demo state only."
+  },
+  {
+    "action": "needs-bench-check",
+    "label": "Needs bench check",
+    "effect": "Marks warranty work as waiting for physical verification in local demo state only."
+  },
+  {
+    "action": "approved-draft",
+    "label": "Approve draft only",
+    "effect": "Payment/warranty draft approval only; no live connector, payment processor, shipping, vendor, or customer action fires."
+  }
+]

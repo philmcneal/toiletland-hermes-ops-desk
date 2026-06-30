@@ -1,0 +1,89 @@
+{
+  "generated_at": "2026-06-26 01:27 PDT",
+  "fixture_only": true,
+  "live_connectors": false,
+  "safety": [
+    "LIVE CONNECTORS OFF",
+    "NO EMAIL SENT",
+    "NO WOO UPDATE",
+    "NO LABEL BOOKED",
+    "NO TRADES",
+    "OWNER APPROVAL REQUIRED"
+  ],
+  "summary": {
+    "cron_health": "needs-tuning",
+    "quiet_watchdogs": 8,
+    "approval_required": 3,
+    "stale_market_theses": 5,
+    "next_command_brief": "07:30 PT"
+  },
+  "recommended_schedule": [
+    {
+      "id": "daily-command-brief",
+      "name": "Daily Command Brief",
+      "cadence": "07:30 PT daily",
+      "lane": "Agent Pulse",
+      "status": "proposed",
+      "owner_value": "One cockpit for email, ops, cron failures, stale market theses, and the first ugly action.",
+      "safety_gate": "Read-only summary; external actions remain draft-only."
+    },
+    {
+      "id": "afternoon-ops-mini-scan",
+      "name": "Afternoon Ops Mini-Scan",
+      "cadence": "14:30 PT daily",
+      "lane": "Operate",
+      "status": "keep",
+      "owner_value": "Catches urgent Toiletland issues before end of day.",
+      "safety_gate": "Silent unless approval-worthy; no customer email sent."
+    },
+    {
+      "id": "eod-approval-catch",
+      "name": "End-of-Day Approval Catch",
+      "cadence": "17:10 PT weekdays",
+      "lane": "Agent Pulse",
+      "status": "proposed",
+      "owner_value": "Prevents unresolved customer/vendor approvals from rolling silently into tomorrow.",
+      "safety_gate": "Owner chooses approve, defer, or dismiss."
+    },
+    {
+      "id": "market-registry-prune",
+      "name": "Market Thesis Prune",
+      "cadence": "18:30 PT Sundays",
+      "lane": "Agent Pulse",
+      "status": "proposed",
+      "owner_value": "Stops zombie ticker crons by expiring old AFRM/RDW/TSLA/DRAM-style theses.",
+      "safety_gate": "Research-only; no brokerage action."
+    }
+  ],
+  "tuning_recommendations": [
+    {
+      "domain": "Market watchers",
+      "recommendation": "Replace ticker-specific cron sprawl with an active thesis registry plus generic market-open, intraday, close, and weekly-prune jobs.",
+      "demo_visual": "Stale thesis counter drops after owner-approved pruning."
+    },
+    {
+      "domain": "Toiletland ops",
+      "recommendation": "Merge the morning email triage, abandoned-cart summary, cron-health check, and ugly-action nudge into the Daily Command Brief.",
+      "demo_visual": "One morning command card with approval-required rows."
+    },
+    {
+      "domain": "System watchdogs",
+      "recommendation": "Keep script-only watchdogs silent when healthy; reduce stable checks from 10-15 minute frequency to 30-60 minutes.",
+      "demo_visual": "Quiet watchdog strip with last-good-run timestamps."
+    }
+  ],
+  "audit_events": [
+    {
+      "at": "2026-06-26 01:27 PDT",
+      "actor": "Hermes",
+      "event": "Reviewed scheduled operations and produced owner-approved tuning proposal.",
+      "outcome": "proposal-only"
+    },
+    {
+      "at": "2026-06-26 01:27 PDT",
+      "actor": "Hermes",
+      "event": "Flagged stale ticker thesis risk and recommended registry-based expiry.",
+      "outcome": "needs-owner"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+[
+  {
+    "at": "2026-06-24 13:22 PDT",
+    "actor": "Hermes",
+    "item_id": "earn-001",
+    "event": "Queued fit-check task from redacted fixture",
+    "outcome": "needs-owner"
+  },
+  {
+    "at": "2026-06-24 13:23 PDT",
+    "actor": "Hermes",
+    "item_id": "operate-001",
+    "event": "Prepared fulfillment/tracking dry-run preview",
+    "outcome": "ready-demo"
+  },
+  {
+    "at": "2026-06-24 13:24 PDT",
+    "actor": "Hermes",
+    "item_id": "spend-001",
+    "event": "Blocked spend/provisioning behind owner approval",
+    "outcome": "blocked-owner"
+  },
+  {
+    "at": "2026-06-24 14:22 PDT",
+    "actor": "Hermes",
+    "item_id": "warranty-command-center",
+    "event": "Loaded redacted warranty command center fixtures: case queue, repair path, parts/refurb gate, supplier/RMA gate",
+    "outcome": "needs-owner"
+  },
+  {
+    "at": "2026-06-24 14:24 PDT",
+    "actor": "Hermes",
+    "item_id": "payment-approval-rail",
+    "event": "Prepared Stripe Skills dry-run payment/spend approval rail; live Stripe API and credentials disabled",
+    "outcome": "blocked-owner"
+  },
+  {
+    "at": "2026-06-28 00:00 PDT",
+    "actor": "Hermes",
+    "item_id": "email-command-center",
+    "event": "Loaded fake/redacted Email Command Center fixtures: read-only triage, draft-only replies, disabled send and mark-read controls",
+    "outcome": "needs-owner"
+  },
+  {
+    "at": "2026-06-28 00:01 PDT",
+    "actor": "Hermes",
+    "item_id": "agent-pulse",
+    "event": "Rendered sanitized Agent Pulse schedule proposal from fixture data; no live cron or Telegram target touched",
+    "outcome": "proposal-only"
+  },
+  {
+    "at": "2026-06-29 13:15 PDT",
+    "actor": "Hermes",
+    "item_id": "stripe-skill-dry-run",
+    "event": "Rendered test-fixture Stripe Skill payloads for Payment Link, Checkout quote, and parts spend approval; no API request sent",
+    "outcome": "proposal-only"
+  },
+  {
+    "at": "2026-06-29 13:35 PDT",
+    "actor": "Hermes",
+    "item_id": "stripe-google-ads-growth-loop",
+    "event": "Rendered Stripe→Google Ads dry-run revenue loop: paid/approved Stripe signals can draft campaign budget and keyword changes; live Ads API and ad spend disabled",
+    "outcome": "proposal-only"
+  }
+]

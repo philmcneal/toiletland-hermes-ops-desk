@@ -1,0 +1,106 @@
+[
+  {
+    "id": "warranty-case-001",
+    "title": "BB-2000 no-spray warranty triage",
+    "brand": "BioBidet",
+    "model_family": "BB-2000",
+    "symptom": "Nozzle extends, but no water sprays after filter/nozzle cleaning. Customer/order identity is fixture-only.",
+    "status": "needs-owner",
+    "severity": "high",
+    "customer_state": "Evidence request draft prepared: serial sticker, short video, current address confirmation.",
+    "next_gate": "Phu chooses repair intake vs tested refurb swap after evidence is reviewed.",
+    "approval_copy": "Approve draft-only evidence request",
+    "repair_path": [
+      "Verify order/warranty and exact seat type before any promise.",
+      "Ask for serial, short video, and current shipping address.",
+      "Map likely solenoid/internal valve path if wand extends with no spray.",
+      "Offer repair intake or tested refurb swap only after Phu approval."
+    ],
+    "parts": ["1ZBB2000-SLNOID", "1ZBB2000-NOZZLE only if track/nozzle issue", "tested BB-2000 refurb candidate"],
+    "proof_assets": ["redacted-customer-thread", "symptom-to-part-reference", "warranty-kanban-card-redacted"],
+    "timeline": [
+      "Fixture email summarized locally",
+      "Hermes classified symptom and evidence gap",
+      "No email sent; owner approval required"
+    ],
+    "audit_note": "Internal warranty queue only; no customer email, label, or WooCommerce action."
+  },
+  {
+    "id": "warranty-case-002",
+    "title": "DLS/Horizon power-failure service recovery",
+    "brand": "BioBidet",
+    "model_family": "DLS / Horizon",
+    "symptom": "No power after outlet check; overdue follow-up risk. Names, order numbers, and addresses are removed.",
+    "status": "needs-owner",
+    "severity": "high",
+    "customer_state": "Service-recovery draft is ready, but needs Phu approval before contact.",
+    "next_gate": "Decide whether to request PCB repair path, repair intake, or replacement/refurb path.",
+    "approval_copy": "Approve service-recovery draft only",
+    "repair_path": [
+      "Confirm DLS/Horizon family and warranty coverage.",
+      "Avoid making customer repeat basic outlet diagnostics.",
+      "Use PCB/internal fuse path first if repair bench is chosen.",
+      "Verify current address before any replacement or label."
+    ],
+    "parts": ["1ZDLS-MPCB / 1ZMEG-DLSMNPCB", "DLS/Horizon refurb candidate", "repair intake label draft only"],
+    "proof_assets": ["redacted-overdue-thread", "repair-path-reference", "address-verification-checklist"],
+    "timeline": [
+      "Fixture case marked urgent",
+      "Hermes found likely repair family",
+      "External reply blocked until owner approval"
+    ],
+    "audit_note": "Service-recovery path visible, but no message leaves the machine."
+  },
+  {
+    "id": "warranty-case-003",
+    "title": "Supplier RMA / send-in repair gate",
+    "brand": "H4H / Ultra-Nova",
+    "model_family": "Ultra-Nova family",
+    "symptom": "Supplier repair/RMA path exists, but customs, label, and customer instructions need owner sign-off.",
+    "status": "blocked-owner",
+    "severity": "medium",
+    "customer_state": "RMA checklist prepared with fake reference codes and no real destination data.",
+    "next_gate": "Phu approves exact boxed contents, customs values, and whether to book label.",
+    "approval_copy": "Approve RMA checklist only",
+    "repair_path": [
+      "Verify boxed contents and accessories before label.",
+      "Confirm customs/declared value assumptions.",
+      "Prepare supplier/customer tracking drafts only.",
+      "Book no label until Phu explicitly approves."
+    ],
+    "parts": ["supplier-RMA-placeholder", "customs-checklist", "label-dry-run-artifact"],
+    "proof_assets": ["redacted-rma-thread", "dry-run-label-json-redacted", "supplier-policy-note"],
+    "timeline": [
+      "RMA path recognized",
+      "Hermes generated preflight checklist",
+      "Booking controls disabled"
+    ],
+    "audit_note": "No Freightcom, supplier, or customer system is touched."
+  },
+  {
+    "id": "warranty-case-004",
+    "title": "Returned-unit refurb inventory intake",
+    "brand": "BioBidet",
+    "model_family": "BB-2000 / DLS / Horizon",
+    "symptom": "Returned seats need physical ID, model confirmation, repair status, and refurb readiness before reuse.",
+    "status": "ready-demo",
+    "severity": "medium",
+    "customer_state": "Physical-bench checklist generated; case is not tied to a real customer in demo data.",
+    "next_gate": "Phu labels boxes, photos stickers/accessories, and runs bench test before matching to any customer.",
+    "approval_copy": "Approve inventory checklist only",
+    "repair_path": [
+      "Assign internal inventory ID to each physical unit.",
+      "Photograph model/serial sticker, box label, accessories, and seat shape.",
+      "Bench test power, wash, heat, dryer, nozzle movement, and leaks.",
+      "Only mark refurb-ready after repair and sustained testing."
+    ],
+    "parts": ["physical-inventory-id", "bench-test-checklist", "refurb-ready gate"],
+    "proof_assets": ["redacted-bench-photo-slot", "inventory-csv-redacted", "repair-log-redacted"],
+    "timeline": [
+      "Returned-unit lead created",
+      "Hermes blocks premature customer match",
+      "Bench verification required"
+    ],
+    "audit_note": "Inventory control stays local until physical verification exists."
+  }
+]

@@ -1,0 +1,95 @@
+[
+  {
+    "id": "earn-001",
+    "lane": "Earn",
+    "title": "Fit-check customer without sending anything",
+    "source": "Redacted customer asks: ‘Will a warm-water seat fit my skirted toilet, and is there a lower-risk option under my budget?’ [name/email/order removed]",
+    "summary": "Turn a messy product-fit question into a margin-safe recommendation and Phil-style reply draft.",
+    "business_impact": "Saves the sale while preventing a bad fit recommendation.",
+    "risk": "medium",
+    "status": "needs-owner",
+    "source_type": "redacted email snippet",
+    "approval_required": true,
+    "recommended_action": "Draft a human reply recommending a compatible bidet lane, explain fit caveats, and ask for a toilet photo before final purchase if uncertain.",
+    "proof_assets": [
+      "earn-fit-check-redacted",
+      "earn-phil-draft-redacted"
+    ],
+    "reasoning": [
+      "Customer wants fit confidence, not a generic product dump.",
+      "Recommendation should avoid overpromising compatibility from incomplete info.",
+      "Owner approval is required before any customer-facing send."
+    ]
+  },
+  {
+    "id": "operate-001",
+    "lane": "Operate",
+    "title": "Fulfillment/tracking dry-run for a ready order",
+    "source": "Redacted order event: paid order is ready for fulfillment. All customer identifiers, address, order number, and tracking number are fake.",
+    "summary": "Prepare WooCommerce status/tracking-sync preview and local audit entry without touching live WooCommerce.",
+    "business_impact": "Cuts fulfillment follow-up time without mutating WooCommerce.",
+    "risk": "low",
+    "status": "ready-demo",
+    "source_type": "redacted order/log snippet",
+    "approval_required": true,
+    "recommended_action": "Show a dry-run tracking sync: label found, status update prepared, audit row generated, live update disabled.",
+    "proof_assets": [
+      "operate-tracking-sync-redacted",
+      "audit-log-redacted"
+    ],
+    "reasoning": [
+      "The demo proves operational viability without booking labels or mutating WooCommerce.",
+      "Fake IDs keep customer/order data out of the recording.",
+      "Audit preview shows what would happen after owner approval."
+    ]
+  },
+  {
+    "id": "spend-001",
+    "lane": "Spend",
+    "title": "Stripe revenue + Google Ads growth loop blocked by approval gate",
+    "source": "Redacted repair case: customer may owe extra shipping or a bench diagnosis may require extra parts. Dollar amounts, customer identity, and vendor identity are fixture-only.",
+    "summary": "Display a Stripe Skills dry-run rail and Google Ads draft loop: collect repair revenue, approve parts spend, then draft profitable ad-budget changes without live API calls.",
+    "business_impact": "Shows a closed commerce loop: earn money with Stripe, control spend, then reinvest only when margin and owner approval clear.",
+    "risk": "high",
+    "status": "blocked-owner",
+    "source_type": "redacted vendor/provisioning note",
+    "approval_required": true,
+    "recommended_action": "Open the Payments rail: draft Stripe Payment Link / Checkout / spend payloads, then show the Google Ads growth draft that remains blocked until Phu approves live ad spend.",
+    "proof_assets": [
+      "stripe-payment-link-payload",
+      "stripe-checkout-payload",
+      "parts-spend-policy",
+      "google-ads-budget-draft",
+      "owner-approval-audit-row"
+    ],
+    "reasoning": [
+      "The sponsor-fit story is agentic commerce: earn/collect revenue, control spend, and decide where growth dollars go.",
+      "Stripe conversion/spend signals become evidence for Google Ads budget drafts, not automatic ad spend.",
+      "The demo uses test fixtures only: no Stripe key, no live Payment Link, no Checkout Session, no charge, no purchase, no Google Ads API call, and no campaign publish."
+    ]
+  },
+  {
+    "id": "warranty-001",
+    "lane": "Warranty",
+    "title": "Warranty Command Center — internal dashboard first",
+    "source": "Redacted warranty board fixture: multiple cases need symptom triage, repair path, parts/refurb inventory, supplier/RMA gates, and owner approval. No real names, emails, addresses, or order IDs are present.",
+    "summary": "Turn warranty mental debt into a controlled internal command center before any customer, supplier, WooCommerce, shipping, or refund action.",
+    "business_impact": "Makes overdue warranty pressure visible without touching live customers or vendors.",
+    "risk": "high",
+    "status": "needs-owner",
+    "source_type": "redacted warranty Kanban fixture",
+    "approval_required": true,
+    "recommended_action": "Open the Warranty Command Center below: triage fake cases by symptom, repair path, part/refurb gate, supplier/RMA gate, and local audit trail. Keep all live actions disabled.",
+    "proof_assets": [
+      "warranty-board-redacted",
+      "symptom-to-part-map-redacted",
+      "parts-inventory-redacted",
+      "repair-bench-checklist"
+    ],
+    "reasoning": [
+      "The real business bottleneck is not one email; it is case state, repair state, inventory, and approval state scattered across tools.",
+      "Internal dashboard first prevents exposing messy status to customers before the workflow is reliable.",
+      "Every risky action remains owner-gated: reply, label, supplier escalation, refund, replacement, or refurb match."
+    ]
+  }
+]

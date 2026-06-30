@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Toiletland × Hermes · Autonomous Ops Desk</title>
+  <meta name="description" content="Safe agents for messy SMB ops: warranty plus Stripe-shaped payment rails plus Google Ads growth drafts. Owner-in-the-loop, audit-logged, zero live side effects. Demo mode with redacted fixtures." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Toiletland × Hermes · Autonomous Ops Desk" />
+  <meta property="og:description" content="Safe agents for messy SMB ops. Owner approves, Hermes drafts, the audit log proves it. Zero live side effects." />
+  <meta property="og:image" content="assets/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ===== Inline icon sprite (single family, 1.75 stroke) ===== -->
+  <svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0">
+    <defs>
+      <symbol id="i-earn" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></symbol>
+      <symbol id="i-operate" viewBox="0 0 24 24"><path d="M5 18H3c-.6 0-1-.4-1-1V7c0-.6.4-1 1-1h10c.6 0 1 .4 1 1v11"/><path d="M14 9h4l4 4v4c0 .6-.4 1-1 1h-2"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></symbol>
+      <symbol id="i-spend" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></symbol>
+      <symbol id="i-warranty" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+      <symbol id="i-all" viewBox="0 0 24 24"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></symbol>
+      <symbol id="i-queue" viewBox="0 0 24 24"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+      <symbol id="i-shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+      <symbol id="i-ban" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+      <symbol id="i-zap" viewBox="0 0 24 24"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></symbol>
+      <symbol id="i-bot" viewBox="0 0 24 24"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></symbol>
+      <symbol id="i-gauge" viewBox="0 0 24 24"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></symbol>
+      <symbol id="i-scroll" viewBox="0 0 24 24"><path d="M15 12h-5"/><path d="M15 8h-5"/><path d="M19 17V5a2 2 0 0 0-2-2H4"/><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"/></symbol>
+      <symbol id="i-inbox" viewBox="0 0 24 24"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></symbol>
+      <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+      <symbol id="i-banknote" viewBox="0 0 24 24"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01"/><path d="M18 12h.01"/></symbol>
+      <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M3 21v-5h5"/></symbol>
+      <symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></symbol>
+    </defs>
+  </svg>
+
+  <div class="app-shell">
+    <!-- ===== Top bar ===== -->
+    <header class="topbar">
+      <div class="brand-lockup">
+        <h1 class="brand-logo-heading">
+          <img class="brand-logo" src="assets/toiletland-logo-wordmark.png" alt="Toiletland - Canada's No.1 Bidet Toilet Seat Store" />
+        </h1>
+        <p class="brand-sub">Autonomous Ops Desk · powered by Hermes</p>
+      </div>
+      <div class="topbar-right">
+        <span class="live-indicator"><span class="live-dot"></span> Monitoring fixtures</span>
+        <span class="pill"><svg class="icon"><use href="#i-ban"/></svg> Demo mode</span>
+        <span class="pill danger"><svg class="icon"><use href="#i-lock"/></svg> Live actions OFF</span>
+        <button class="btn-primary" id="run-triage"><svg class="icon"><use href="#i-play"/></svg> Run triage</button>
+        <button class="btn-secondary" id="reset-demo"><svg class="icon"><use href="#i-refresh"/></svg> Reset demo</button>
+      </div>
+    </header>
+
+    <!-- ===== Sticky deck header: KPI strip + tabs ===== -->
+    <div class="deck-header">
+      <div class="kpi-strip" aria-label="Key safety metrics">
+        <div class="kpi">
+          <span class="kpi-label">Draft value gated</span>
+          <span class="kpi-value" id="kpi-spend">CA$0</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-label">Live Stripe links</span>
+          <span class="kpi-value" id="kpi-charged">0</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-label">Owner-gated</span>
+          <span class="kpi-value good" id="kpi-gated">100%<small>of live actions</small></span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-label"><svg class="icon"><use href="#i-lock"/></svg> Live actions fired</span>
+          <span class="kpi-value" id="kpi-live">0<small>all gated</small></span>
+        </div>
+      </div>
+
+      <nav class="tabs" role="tablist" aria-label="Ops desk sections">
+        <button class="tab" role="tab" data-tab="Overview"><svg class="icon"><use href="#i-gauge"/></svg> Overview</button>
+        <button class="tab" role="tab" data-tab="Email"><svg class="icon"><use href="#i-inbox"/></svg> Email <span class="tab-count" id="tab-count-email">0</span></button>
+        <button class="tab" role="tab" data-tab="Triage"><svg class="icon"><use href="#i-queue"/></svg> Triage <span class="tab-count" id="tab-count-triage">0</span></button>
+        <button class="tab" role="tab" data-tab="Warranty"><svg class="icon"><use href="#i-warranty"/></svg> Warranty <span class="tab-count" id="tab-count-warranty">0</span></button>
+        <button class="tab" role="tab" data-tab="Payments"><svg class="icon"><use href="#i-banknote"/></svg> Payments <span class="tab-count" id="tab-count-payments">0</span></button>
+        <button class="tab" role="tab" data-tab="Audit"><svg class="icon"><use href="#i-scroll"/></svg> Audit</button>
+      </nav>
+    </div>
+
+    <main>
+      <!-- ============ OVERVIEW ============ -->
+      <section class="tab-panel" data-panel="Overview">
+        <div class="panel-intro">
+          <div>
+            <h2 class="panel-h">Today at Toiletland</h2>
+            <p class="panel-sub">Hermes triaged the inbox, warranty board, payment drafts, and Stripe→Google Ads growth loop into safe lanes. Nothing leaves the machine until Phu approves it.</p>
+          </div>
+          <span class="trust-line">agent recommends · owner decides · the audit log proves it</span>
+        </div>
+
+        <div class="viz-grid">
+          <div class="viz-card">
+            <span class="card-label">Payment / spend drafts gated</span>
+            <p class="viz-big" id="viz-spend-amount">CA$0</p>
+            <div class="viz-track"><span id="viz-spend-bar" class="viz-track-fill"></span></div>
+            <p class="viz-foot" id="viz-spend-sub"></p>
+          </div>
+          <div class="viz-card">
+            <span class="card-label">Lane load</span>
+            <div id="viz-lane-load" class="viz-bars"></div>
+          </div>
+          <div class="viz-card">
+            <span class="card-label">Risk mix</span>
+            <div class="viz-risk-wrap">
+              <div id="viz-risk" class="viz-donut" role="img" aria-label="Risk distribution"></div>
+              <ul id="viz-risk-legend" class="viz-legend"></ul>
+            </div>
+          </div>
+          <div class="viz-card">
+            <span class="card-label">Owner approval funnel</span>
+            <div id="viz-approvals" class="viz-bars"></div>
+          </div>
+        </div>
+
+        <section class="agent-pulse block" aria-label="Agent Pulse scheduled operations preview">
+          <div class="block-head">
+            <div>
+              <span class="card-label"><svg class="icon"><use href="#i-bot"/></svg> Agent Pulse</span>
+              <h3 class="block-h">Hermes supervises the operating rhythm</h3>
+              <p class="muted-sm">Proposal-only cron/EA tuning from sanitized fixtures. Telegram is delivery; this dashboard is control.</p>
+            </div>
+            <span class="pill danger"><svg class="icon"><use href="#i-ban"/></svg> Proposal only — no cron changed</span>
+          </div>
+          <div class="pulse-grid">
+            <div class="pulse-stat"><span>Next command brief</span><strong id="pulse-next-brief">—</strong></div>
+            <div class="pulse-stat"><span>Quiet watchdogs</span><strong id="pulse-watchdogs">0</strong></div>
+            <div class="pulse-stat"><span>Owner approvals</span><strong id="pulse-approvals">0</strong></div>
+            <div class="pulse-stat"><span>Stale theses</span><strong id="pulse-stale">0</strong></div>
+          </div>
+          <div class="pulse-split">
+            <div>
+              <span class="card-label">Recommended schedule</span>
+              <div id="pulse-schedule" class="pulse-list"></div>
+            </div>
+            <div>
+              <span class="card-label">Safety rails</span>
+              <div id="pulse-safety" class="boundary-grid"></div>
+            </div>
+          </div>
+        </section>
+
+        <div class="overview-split">
+          <section class="block">
+            <div class="block-head">
+              <h3 class="block-h">Needs your attention</h3>
+              <span class="muted-sm">highest-risk items awaiting Phu</span>
+            </div>
+            <div id="needs-attention" class="attention-list" aria-live="polite"></div>
+          </section>
+
+          <aside class="block">
+            <div class="block-head"><h3 class="block-h">How Hermes works</h3></div>
+            <ol class="flow">
+              <li><span class="flow-ico"><svg class="icon"><use href="#i-inbox"/></svg></span><div><strong>Messy inputs</strong><em>orders, inbox, warranty, vendors</em></div></li>
+              <li><span class="flow-ico"><svg class="icon"><use href="#i-all"/></svg></span><div><strong>Triage into lanes</strong><em>Earn · Operate · Spend · Warranty</em></div></li>
+              <li><span class="flow-ico"><svg class="icon"><use href="#i-zap"/></svg></span><div><strong>Draft the action</strong><em>reply, repair path, Stripe payment request</em></div></li>
+              <li class="flow-gate"><span class="flow-ico"><svg class="icon"><use href="#i-shield-check"/></svg></span><div><strong>Owner approves</strong><em>Phu decides, audit log records it</em></div></li>
+            </ol>
+            <div class="boundaries">
+              <span class="card-label"><svg class="icon"><use href="#i-lock"/></svg> Hard boundaries</span>
+              <div class="boundary-grid">
+                <span>No email sent</span><span>No Woo update</span>
+                <span>No label booked</span><span>No Stripe link</span>
+                <span>No card charged</span><span>No refund</span>
+                <span>No Ads publish</span><span>No ad budget change</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ============ EMAIL COMMAND CENTER ============ -->
+      <section class="tab-panel" data-panel="Email" hidden>
+        <div class="panel-intro">
+          <div>
+            <h2 class="panel-h">Email Command Center</h2>
+            <p class="panel-sub">Read-only inbox triage rendered from fake/redacted fixtures. Hermes ranks emails, routes them to skills, drafts replies, and waits for Phu before anything is sent or marked read.</p>
+          </div>
+          <span class="pill danger"><svg class="icon"><use href="#i-ban"/></svg> Send / mark-read OFF</span>
+        </div>
+
+        <div class="email-grid">
+          <div class="list-col">
+            <span class="card-label">Inbox action cards</span>
+            <div id="email-message-list" class="email-message-list" aria-live="polite"></div>
+          </div>
+
+          <article class="detail-panel">
+            <div class="detail-topline">
+              <span id="email-detail-category" class="lane-badge email">Email</span>
+              <span id="email-detail-urgency" class="risk-badge medium">yellow</span>
+            </div>
+            <h3 id="email-detail-subject"></h3>
+            <p id="email-detail-summary" class="muted"></p>
+
+            <div class="split-2">
+              <div class="detail-section">
+                <span class="card-label">Redacted source snippet</span>
+                <blockquote id="email-source-snippet"></blockquote>
+              </div>
+              <div class="detail-section">
+                <span class="card-label">Suggested Hermes skill</span>
+                <p id="email-suggested-skill" class="muted"></p>
+              </div>
+            </div>
+
+
+            <div class="detail-section proposed-action">
+              <span class="card-label"><svg class="icon"><use href="#i-inbox"/></svg> Draft-only reply / recommendation</span>
+              <p id="email-draft-reply"></p>
+            </div>
+
+            <div class="split-2">
+              <div class="detail-section">
+                <span class="card-label">Owner gate</span>
+                <blockquote id="email-owner-gate"></blockquote>
+              </div>
+              <div class="detail-section">
+                <span class="card-label">Proof chips</span>
+                <div id="email-proof-assets" class="proof-chips"></div>
+              </div>
+            </div>
+
+            <div class="approval-rail email-rail">
+              <div class="rail-head">
+                <span class="card-label"><svg class="icon"><use href="#i-shield-check"/></svg> Email owner approval rail</span>
+                <h4 id="email-approval-state">Needs Phu</h4>
+                <p class="muted-sm">These buttons only update browser-local state and the demo audit log. No SMTP/IMAP/Woo action fires.</p>
+              </div>
+              <div class="approval-buttons">
+                <button class="approve" data-email-action="approved-draft"><svg class="icon"><use href="#i-check"/></svg> Approve draft only</button>
+                <button class="needs" data-email-action="needs-owner"><svg class="icon"><use href="#i-clock"/></svg> Keep owner review</button>
+                <button class="reject" data-email-action="rejected-demo"><svg class="icon"><use href="#i-x"/></svg> Reject draft</button>
+              </div>
+            </div>
+
+            <div id="email-disabled-actions" class="disabled-actions" aria-label="Disabled email live actions"></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ============ TRIAGE ============ -->
+      <section class="tab-panel" data-panel="Triage" hidden>
+        <div class="panel-intro">
+          <div>
+            <h2 class="panel-h">Today’s ops triage</h2>
+            <p class="panel-sub">Prioritized by risk and owner value. Pick a card to see the source, Hermes’ reasoning, the proposed action, and the approval rail.</p>
+          </div>
+        </div>
+
+        <div class="lane-chips" role="tablist" aria-label="Filter by lane">
+          <button class="chip active" data-lane="All"><span class="chip-ico all"><svg class="icon"><use href="#i-all"/></svg></span> All <strong id="count-all">0</strong></button>
+          <button class="chip" data-lane="Earn"><span class="chip-ico earn"><svg class="icon"><use href="#i-earn"/></svg></span> Earn <strong id="count-earn">0</strong></button>
+          <button class="chip" data-lane="Operate"><span class="chip-ico operate"><svg class="icon"><use href="#i-operate"/></svg></span> Operate <strong id="count-operate">0</strong></button>
+          <button class="chip" data-lane="Spend"><span class="chip-ico spend"><svg class="icon"><use href="#i-spend"/></svg></span> Spend <strong id="count-spend">0</strong></button>
+          <button class="chip" data-lane="Warranty"><span class="chip-ico warranty"><svg class="icon"><use href="#i-warranty"/></svg></span> Warranty <strong id="count-warranty">0</strong></button>
+        </div>
+
+        <div class="triage-grid">
+          <div id="queue-list" class="queue-list" aria-live="polite"></div>
+
+          <section class="detail-panel" aria-label="Selected task details">
+            <div id="detail-empty" class="empty-state">
+              <span class="empty-ico"><svg class="icon"><use href="#i-queue"/></svg></span>
+              <h3>Select a card</h3>
+              <p>Pick an item to show its source snippet, reasoning, proposed action, approval rail, and audit trail.</p>
+            </div>
+
+            <article id="detail-card" class="detail-card hidden">
+              <div class="detail-topline">
+                <span id="detail-lane" class="lane-badge">Earn</span>
+                <span id="detail-risk" class="risk-badge">medium risk</span>
+              </div>
+              <h3 id="detail-title"></h3>
+              <p id="detail-summary" class="muted"></p>
+
+              <div class="detail-section">
+                <span class="card-label">Redacted source snippet</span>
+                <blockquote id="detail-source"></blockquote>
+              </div>
+
+              <div class="detail-section">
+                <span class="card-label">Hermes reasoning</span>
+                <ul id="detail-reasoning" class="reasoning-list"></ul>
+              </div>
+
+              <div class="detail-section proposed-action">
+                <span class="card-label"><svg class="icon"><use href="#i-zap"/></svg> Proposed action</span>
+                <p id="detail-action"></p>
+              </div>
+
+              <div class="detail-section">
+                <span class="card-label">Redacted proof assets to swap in</span>
+                <div id="detail-proof-assets" class="proof-chips"></div>
+              </div>
+
+              <div class="approval-rail">
+                <div class="rail-head">
+                  <span class="card-label"><svg class="icon"><use href="#i-shield-check"/></svg> Owner approval rail</span>
+                  <h4 id="approval-state">Needs Phu</h4>
+                  <p class="muted-sm">These buttons only change local browser state and the demo audit log.</p>
+                </div>
+                <div class="approval-buttons">
+                  <button class="approve" data-action="approved-demo"><svg class="icon"><use href="#i-check"/></svg> Approve draft only</button>
+                  <button class="needs" data-action="needs-owner"><svg class="icon"><use href="#i-clock"/></svg> Keep owner review</button>
+                  <button class="reject" data-action="rejected-demo"><svg class="icon"><use href="#i-x"/></svg> Reject</button>
+                </div>
+              </div>
+
+              <div class="disabled-actions" aria-label="Disabled live actions">
+                <button disabled><svg class="icon"><use href="#i-ban"/></svg> Send email</button>
+                <button disabled><svg class="icon"><use href="#i-ban"/></svg> Update WooCommerce</button>
+                <button disabled><svg class="icon"><use href="#i-ban"/></svg> Book label</button>
+                <button disabled><svg class="icon"><use href="#i-ban"/></svg> Purchase</button>
+              </div>
+            </article>
+          </section>
+        </div>
+      </section>
+
+      <!-- ============ WARRANTY ============ -->
+      <section class="tab-panel" data-panel="Warranty" hidden>
+        <div class="panel-intro">
+          <div>
+            <h2 class="panel-h">Warranty Command Center</h2>
+            <p class="panel-sub">Internal dashboard first: case queue, repair path, parts/refurb/RMA gate. Fake/redacted fixtures only, mirroring the real board shape without exposing customer or vendor data.</p>
+          </div>
+          <span class="pill danger"><svg class="icon"><use href="#i-ban"/></svg> Live warranty actions OFF</span>
+        </div>
+
+        <div class="warranty-grid">
+          <div class="list-col">
+            <span class="card-label">Case queue</span>
+            <div id="warranty-case-list" class="warranty-case-list" aria-live="polite"></div>
+          </div>
+
+          <article class="detail-panel">
+            <div class="detail-topline">
+              <span id="warranty-detail-brand" class="lane-badge warranty">Warranty</span>
+              <span id="warranty-detail-severity" class="risk-badge high">high risk</span>
+            </div>
+            <h3 id="warranty-detail-title"></h3>
+            <p id="warranty-detail-symptom" class="muted"></p>
+
+            <div class="split-2">
+              <div class="detail-section">
+                <span class="card-label">Next owner gate</span>
+                <blockquote id="warranty-next-gate"></blockquote>
+              </div>
+              <div class="detail-section">
+                <span class="card-label">Customer / case state</span>
+                <p id="warranty-customer-state" class="muted"></p>
+              </div>
+            </div>
+
+            <div class="detail-section proposed-action">
+              <span class="card-label"><svg class="icon"><use href="#i-zap"/></svg> Symptom to repair path</span>
+              <ol id="warranty-repair-path" class="numbered-list"></ol>
+            </div>
+
+            <div class="split-2">
+              <div class="detail-section">
+                <span class="card-label">Parts / refurb gate</span>
+                <div id="warranty-parts" class="proof-chips"></div>
+              </div>
+              <div class="detail-section">
+                <span class="card-label">Redacted proof assets</span>
+                <div id="warranty-proof-assets" class="proof-chips"></div>
+              </div>
+            </div>
+
+            <div class="detail-section">
+              <span class="card-label">Local case timeline</span>
+              <ul id="warranty-timeline" class="reasoning-list"></ul>
+            </div>
+
+            <div class="approval-rail warranty-rail">
+              <div class="rail-head">
+                <span class="card-label"><svg class="icon"><use href="#i-shield-check"/></svg> Warranty owner approval rail</span>
+                <h4 id="warranty-approval-state">Needs Phu</h4>
+                <p id="warranty-approval-copy" class="muted-sm">Approve draft-only warranty work. No external action fires.</p>
+              </div>
+              <div class="approval-buttons">
+                <button class="approve" data-warranty-action="approved-draft"><svg class="icon"><use href="#i-check"/></svg> Approve draft only</button>
+                <button class="needs" data-warranty-action="needs-bench-check"><svg class="icon"><use href="#i-clock"/></svg> Needs bench check</button>
+                <button class="reject" data-warranty-action="rejected-demo"><svg class="icon"><use href="#i-x"/></svg> Reject path</button>
+              </div>
+            </div>
+
+            <div class="disabled-actions" aria-label="Disabled warranty live actions">
+              <button disabled><svg class="icon"><use href="#i-ban"/></svg> Email customer</button>
+              <button disabled><svg class="icon"><use href="#i-ban"/></svg> Escalate supplier</button>
+              <button disabled><svg class="icon"><use href="#i-ban"/></svg> Book label</button>
+              <button disabled><svg class="icon"><use href="#i-ban"/></svg> Refund / replace</button>
+            </div>
+          </article>
+
+          <aside class="side-col">
+            <div class="side-card">
+              <span class="card-label"><svg class="icon"><use href="#i-scroll"/></svg> Supplier / RMA lane</span>
+              <h4>Drafts only</h4>
+              <p class="muted-sm">Hermes can prepare supplier notes, customs questions, and RMA checklists. It cannot send, book, refund, or promise.</p>
+            </div>
+            <div class="side-card">
+              <span class="card-label"><svg class="icon"><use href="#i-shield"/></svg> Repair bench lane</span>
+              <h4>Physical verification gate</h4>
+              <p class="muted-sm">Returned-unit cards require box label, model sticker, accessories, symptom, and bench test before refurb matching.</p>
+            </div>
+            <div class="side-card safe-card">
+              <span class="card-label"><svg class="icon"><use href="#i-lock"/></svg> Hard boundaries</span>
+              <ul class="tick-list">
+                <li>No live customer/vendor systems</li>
+                <li>No real customer names or order IDs</li>
+                <li>No WooCommerce mutations</li>
+                <li>No labels, refunds, or replacements</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ============ PAYMENTS ============ -->
+      <section class="tab-panel" data-panel="Payments" hidden>
+        <div class="panel-intro">
+          <div>
+            <h2 class="panel-h">Payments → growth loop approval rail</h2>
+            <p class="panel-sub">Hermes turns payment and parts decisions into a closed-loop growth draft: collect recoverable revenue with Stripe-shaped payloads, protect margin, then propose Google Ads changes only after evidence clears the owner gate. No Stripe key or Google Ads credential is loaded, no live API call fires, and no link, charge, refund, purchase, campaign publish, ad spend, or customer message happens.</p>
+          </div>
+          <div class="payments-brand-stack" aria-label="Visible payment sponsor rail">
+            <span class="brand-badge stripe-brand-badge">
+              <img src="assets/vendor/stripe.svg" alt="Stripe" />
+              <strong class="stripe-wordmark-text">Stripe</strong>
+              <span>dry-run payment rail</span>
+            </span>
+            <span class="pill danger"><svg class="icon"><use href="#i-ban"/></svg> Stripe + Ads live APIs OFF</span>
+          </div>
+        </div>
+
+        <div class="payment-grid">
+          <div class="list-col">
+            <span class="card-label">Closed-loop money queue</span>
+            <div id="payment-request-list" class="payment-request-list" aria-live="polite"></div>
+          </div>
+
+          <article class="detail-panel">
+            <div class="detail-topline">
+              <span id="payment-detail-kind" class="lane-badge spend">Spend</span>
+              <span id="payment-detail-risk" class="risk-badge high">high risk</span>
+            </div>
+            <h3 id="payment-detail-title"></h3>
+            <p id="payment-detail-amount" class="payment-amount"></p>
+            <p id="payment-detail-state" class="muted"></p>
+
+            <div class="split-2">
+              <div class="detail-section">
+                <span class="card-label">Why Hermes flagged it</span>
+                <blockquote id="payment-detail-reason"></blockquote>
+              </div>
+              <div class="detail-section">
+                <span class="card-label">Processor stance</span>
+                <p id="payment-detail-processor" class="muted"></p>
+              </div>
+            </div>
+
+            <div id="stripe-skill-panel" class="detail-section stripe-dry-run">
+              <div class="stripe-panel-head">
+                <span class="card-label"><svg class="icon"><use href="#i-banknote"/></svg> Stripe Skills dry-run payload</span>
+                <span class="stripe-panel-mark"><img class="stripe-panel-logo" src="assets/vendor/stripe.svg" alt="Stripe" /><strong>Stripe</strong></span>
+              </div>
+              <div class="stripe-skill-grid">
+                <div class="stripe-skill-meta">
+                  <strong id="stripe-skill-name">stripe.payment_link.draft</strong>
+                  <span>Mode: <code id="stripe-skill-mode">test_fixture_no_api_call</code></span>
+                  <span>Call: <code id="stripe-skill-call">payment_links.create</code></span>
+                  <span>Amount: <code id="stripe-skill-amount">CAD 0.00</code></span>
+                  <span>Idempotency: <code id="stripe-skill-idempotency">owner-approval-required</code></span>
+                </div>
+                <pre id="stripe-skill-payload" class="stripe-payload" aria-label="Stripe payload preview"></pre>
+              </div>
+              <p class="muted-sm stripe-note">Rendered from fixtures only. This is the exact handoff Hermes would prepare before an owner-approved Stripe Skill call; no credential or network request is used in the demo.</p>
+            </div>
+
+            <div id="growth-loop-panel" class="detail-section growth-dry-run">
+              <span class="card-label"><svg class="icon"><use href="#i-gauge"/></svg> Stripe → Google Ads dry-run growth loop</span>
+              <div class="growth-loop-steps" aria-label="Fixture-only growth loop stages">
+                <div class="growth-step stripe-step">
+                  <span>1 · Stripe signal</span>
+                  <strong id="growth-step-signal">fixture conversion</strong>
+                  <small>Evidence captured locally</small>
+                </div>
+                <div class="growth-step ads-step">
+                  <span>2 · Ads draft</span>
+                  <strong id="growth-step-budget">CA$0 live spend</strong>
+                  <small>Budget / keyword change only</small>
+                </div>
+                <div class="growth-step gate-step">
+                  <span>3 · Owner gate</span>
+                  <strong id="growth-step-gate">Publish blocked</strong>
+                  <small id="growth-step-safety">No API call · no ad spend</small>
+                </div>
+              </div>
+              <div class="growth-loop-grid">
+                <div class="growth-loop-meta">
+                  <strong id="growth-loop-label">Stripe → Google Ads dry-run</strong>
+                  <span>Mode: <code id="growth-loop-mode">test_fixture_no_api_call</code></span>
+                  <span>Call: <code id="growth-loop-call">draft only</code></span>
+                  <span>Budget: <code id="growth-loop-budget">CA$0 live spend</code></span>
+                  <span>ROAS gate: <code id="growth-loop-roas">owner approval required</code></span>
+                </div>
+                <div class="growth-loop-copy">
+                  <span class="mini-label">Stripe signal</span>
+                  <p id="growth-loop-signal"></p>
+                  <span class="mini-label">Drafted Ads action</span>
+                  <p id="growth-loop-action"></p>
+                </div>
+                <pre id="growth-loop-payload" class="growth-payload" aria-label="Google Ads payload preview"></pre>
+              </div>
+              <p class="muted-sm growth-note">The win story: Hermes does not just collect money. Stripe signals become evidence for growth decisions, but publishing Google Ads changes and spending budget remains owner-gated.</p>
+            </div>
+
+            <div class="detail-section proposed-action">
+              <span class="card-label"><svg class="icon"><use href="#i-banknote"/></svg> Draft line items</span>
+              <ul id="payment-line-items" class="reasoning-list"></ul>
+            </div>
+
+            <div class="split-2">
+              <div class="detail-section">
+                <span class="card-label"><svg class="icon"><use href="#i-shield"/></svg> Guardrails</span>
+                <ul id="payment-guardrails" class="reasoning-list"></ul>
+              </div>
+              <div class="detail-section">
+                <span class="card-label">Proof chips</span>
+                <div id="payment-proof-assets" class="proof-chips"></div>
+              </div>
+            </div>
+
+            <div class="approval-rail payment-rail">
+              <div class="rail-head">
+                <span class="card-label"><svg class="icon"><use href="#i-shield-check"/></svg> Payment owner approval rail</span>
+                <h4 id="payment-approval-state">Needs Phu</h4>
+                <p id="payment-approval-copy" class="muted-sm">Approve draft-only payment/spend work. No payment processor is called.</p>
+              </div>
+              <div class="approval-buttons">
+                <button class="approve" data-payment-action="approved-draft"><svg class="icon"><use href="#i-check"/></svg> Approve draft only</button>
+                <button class="needs" data-payment-action="needs-owner"><svg class="icon"><use href="#i-clock"/></svg> Keep owner review</button>
+                <button class="reject" data-payment-action="rejected-demo"><svg class="icon"><use href="#i-x"/></svg> Reject money move</button>
+              </div>
+            </div>
+
+            <div id="payment-disabled-actions" class="disabled-actions" aria-label="Disabled payment live actions"></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ============ AUDIT ============ -->
+      <section class="tab-panel" data-panel="Audit" hidden>
+        <div class="panel-intro">
+          <div>
+            <h2 class="panel-h">Audit log</h2>
+            <p class="panel-sub">Every proposed action and every owner decision leaves a trail. Browser-local only in the demo.</p>
+          </div>
+          <span class="pill"><svg class="icon"><use href="#i-lock"/></svg> Browser-local only</span>
+        </div>
+        <div id="audit-log" class="audit-log"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <img class="footer-logo" src="assets/toiletland-logo-wordmark.png" alt="Toiletland" />
+        <div>
+          <strong>Toiletland × Hermes</strong>
+          <span class="muted-sm">Autonomous Ops Desk. Stripe + Google Ads drafts, redacted fixtures, zero live side effects.</span>
+        </div>
+      </div>
+      <p class="footer-note"><svg class="icon"><use href="#i-shield-check"/></svg> Agent recommends · owner decides · audit log proves it</p>
+    </footer>
+  </div>
+
+  <template id="queue-card-template">
+    <button class="queue-card">
+      <span class="queue-card-topline">
+        <span class="lane-badge"></span>
+        <span class="status-badge"></span>
+      </span>
+      <strong class="card-title"></strong>
+      <span class="card-summary"></span>
+      <span class="card-impact"></span>
+      <span class="card-meta"></span>
+    </button>
+  </template>
+
+  <template id="warranty-case-template">
+    <button class="warranty-case-card">
+      <span class="queue-card-topline">
+        <span class="warranty-brand"></span>
+        <span class="status-badge"></span>
+      </span>
+      <strong class="card-title"></strong>
+      <span class="card-summary"></span>
+      <span class="card-impact"></span>
+    </button>
+  </template>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
