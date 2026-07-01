@@ -6,25 +6,31 @@ This is a hackathon project showing a safety-first operating desk for a real own
 
 ## Demo links
 
-- **Video:** https://youtu.be/BDsFZqQUK8A
+- **Video:** https://youtu.be/u1kSiYOwe5E
 - **X demo post:** https://x.com/ToiletlandCA/status/2071977729655033944
 - **Discord hackathon thread:** https://discord.com/channels/1053877538025386074/1521439452894072863
 
 ## What it proves
 
-The public demo is a **public-masked live-readonly proof**:
+The demo is a **fixture-only, owner-gated control room** for a one-owner Canadian bidet business. Everything is local, redacted, and dry-run:
 
-- 20 redacted live-readonly snapshots ingested into the local SQLite/audit architecture
-- 10 email snapshots + 10 WooCommerce snapshots
-- raw records stored: **0**
-- live mutations: **0**
+- one command center over the whole business: email, orders, warranty, payments, tax, growth, and local hosting
+- an owner-value view of items triaged, draft value in review, decisions queued, and rough hours saved, all from redacted fixtures
+- email triage with draft-only replies, where send and mark-read stay disabled
+- a warranty workflow that turns one messy repair case into one clear owner decision
+- Stripe-shaped payment requests and a Stripe to Google Ads growth loop, all dry-run
+- every risky action owner-gated and written to a local audit trail only after approval
+
+Live side effects stay off by default:
+
+- live actions fired: **0**
 - no email send, mark-read, move, or delete
 - no WooCommerce order edits, refunds, or fulfilment changes
 - no Stripe live charges, Payment Links, Checkout sessions, or refunds
 - no Google Ads publish, budget, or spend changes
 - no shipping/vendor/social/cron automation
 
-The repo also includes redacted fixtures so the demo can run locally without credentials.
+The repo includes redacted fixtures so the demo runs locally without credentials.
 
 ## Why this matters
 
